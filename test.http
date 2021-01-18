@@ -1,0 +1,61 @@
+### Create New Product
+POST http://localhost:8080/api/products
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk3ZGU1NDc3LWNjZGItNDYxYy1iNTIxLTlmYjBlNzM2MGU5ZSIsInVzZXJuYW1lIjoic3VrZW5kYSIsInJvbGUiOiJBZG1pbiIsImV4cCI6MTYxMDc4NDk5MH0.KKwLnHq3oNRxZamq13k9ASIYfPA1EEKp7Ssxp2yeJ9E
+
+{
+  "name": "Mac Book Pro 01",
+  "price": 35000000,
+  "quantity": 10
+}
+
+### Update Product
+PUT http://localhost:8080/api/products
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk3ZGU1NDc3LWNjZGItNDYxYy1iNTIxLTlmYjBlNzM2MGU5ZSIsInVzZXJuYW1lIjoic3VrZW5kYSIsInJvbGUiOiJBZG1pbiIsImV4cCI6MTYxMDc4NDk5MH0.KKwLnHq3oNRxZamq13k9ASIYfPA1EEKp7Ssxp2yeJ9E
+
+{
+  "id": "9cca18b4-3646-41d6-8dc7-1e0dbeaa0f88",
+  "name": "Mac Book Pro 01 Edited",
+  "price": 34000000,
+  "quantity": 20
+}
+
+### Find By ID
+GET http://localhost:8080/api/products/535e15c6-8117-4b8b-bf6c-aa8e2f4ff02f
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk3ZGU1NDc3LWNjZGItNDYxYy1iNTIxLTlmYjBlNzM2MGU5ZSIsInVzZXJuYW1lIjoic3VrZW5kYSIsInJvbGUiOiJBZG1pbiIsImV4cCI6MTYxMDc4NDk5MH0.KKwLnHq3oNRxZamq13k9ASIYfPA1EEKp7Ssxp2yeJ9E
+
+### Delete
+DELETE http://localhost:8080/api/products/9cca18b4-3646-41d6-8dc7-1e0dbeaa0f88
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk3ZGU1NDc3LWNjZGItNDYxYy1iNTIxLTlmYjBlNzM2MGU5ZSIsInVzZXJuYW1lIjoic3VrZW5kYSIsInJvbGUiOiJBZG1pbiIsImV4cCI6MTYxMDc4NDk5MH0.KKwLnHq3oNRxZamq13k9ASIYfPA1EEKp7Ssxp2yeJ9E
+
+### Get All Products
+GET http://localhost:8080/api/products
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5N2RlNTQ3Ny1jY2RiLTQ2MWMtYjUyMS05ZmIwZTczNjBlOWUiLCJ1c2VybmFtZSI6InN1a2VuZGEiLCJyb2xlIjoiQWRtaW4iLCJleHAiOjE2MTA3ODUzMjd9.qwMSzCCC1SIMIOcvuIudzvFBoXcmcp63c7nIGlQSZLc
+
+### Register User
+POST http://localhost:8080/api/signup
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "sukenda",
+  "password": "sukenda",
+  "email": "soekenda09@gmail.com",
+  "phone": "098777889876"
+}
+
+### Login User
+POST http://localhost:8080/api/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
