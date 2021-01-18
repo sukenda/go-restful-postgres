@@ -46,7 +46,7 @@ Accept: application/json
 {
   "username": "sukenda",
   "password": "sukenda",
-  "email": "soekenda09@gmail.com",
+  "email": "soekenda@gmail.com",
   "phone": "098777889876"
 }
 
@@ -56,6 +56,6 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "username": "admin",
-  "password": "admin"
+  "username": "sukenda",
+  "password": "sukenda"
 }

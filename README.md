@@ -1,6 +1,6 @@
 # Go Restful Api
 
-Go restful api build for learning go using fiber and mongodb
+Go restful api build for learning go using echo and postgresql and gorm
 
 # API Spec
 

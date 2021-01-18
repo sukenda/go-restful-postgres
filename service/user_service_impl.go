@@ -31,11 +31,11 @@ func (service userServiceImpl) Register(request model.CreateUserRequest) (respon
 		Phone:    request.Phone,
 	}
 
-	err = service.repository.Insert(user)
+	result, err := service.repository.Insert(user)
 	exception.PanicIfNeeded(err)
 
 	response = model.CreateUserResponse{
-		Id:       user.Id.String(),
+		Id:       result.Id,
 		Username: user.Username,
 		Email:    user.Email,
 		Phone:    user.Phone,
@@ -49,7 +49,7 @@ func (service userServiceImpl) FindByUsername(username string) (response model.C
 	exception.PanicIfNeeded(err)
 
 	response = model.CreateUserResponse{
-		Id:       user.Id.String(),
+		Id:       user.Id,
 		Username: user.Username,
 		Email:    user.Email,
 		Phone:    user.Phone,
@@ -70,7 +70,7 @@ func (service userServiceImpl) Login(request model.CreateUserRequest) (response 
 	response = model.GetLoginResponse{
 		AccessToken: token,
 		User: model.GetUserResponse{
-			Id:       user.Id.String(),
+			Id:       user.Id,
 			Username: user.Username,
 			Email:    user.Email,
 			Phone:    user.Phone,

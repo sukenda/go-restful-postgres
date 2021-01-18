@@ -1,7 +1,11 @@
 package repository
 
 import (
+	"errors"
+	"github.com/sukenda/go-restful-postgre/config"
 	"github.com/sukenda/go-restful-postgre/entity"
+	"github.com/sukenda/go-restful-postgre/exception"
+	"github.com/sukenda/go-restful-postgre/validation"
 	"gorm.io/gorm"
 )
 
@@ -13,63 +17,47 @@ type userRepositoryImpl struct {
 	Database *gorm.DB
 }
 
-func (repository userRepositoryImpl) Insert(user entity.User) error {
-	/*ctx, cancel := config.NewMongoContext()
-	defer cancel()
+func (repository userRepositoryImpl) Insert(param entity.User) (user entity.User, err error) {
+	database := config.GetDatabase()
 
-	_, err := repository.FindByUsername(user.Username)
+	_, err = repository.FindByUsername(param.Username)
 	if err == nil {
 		exception.PanicIfNeeded(exception.ValidationError{
 			Message: "USER_EXIST",
 		})
 	}
 
-	_, err = repository.Collection.InsertOne(ctx, bson.M{
-		"_id":      user.Id,
-		"username": user.Username,
-		"password": user.Password,
-		"email":    user.Email,
-		"phone":    user.Phone,
-	})
-	exception.PanicIfNeeded(err)*/
+	result := database.Create(&param)
+	if result.Error != nil {
+		exception.PanicIfNeeded(exception.ValidationError{
+			Message: "EMAIL_EXIST",
+		})
+	}
 
-	return nil
+	return param, nil
 }
 
 func (repository userRepositoryImpl) FindByUsername(username string) (user entity.User, err error) {
-	/*ctx, cancel := config.NewMongoContext()
-	defer cancel()
+	database := config.GetDatabase()
+	database.Where("username = ?", username).First(&user)
 
-	filter := bson.M{"username": username}
-	err = repository.Collection.FindOne(ctx, filter).Decode(&user)
-	if err != nil {
-		if err == mongo.ErrNoDocuments {
-			return user, errors.New("USER_NOT_FOUND")
-		}
-	}*/
+	if len(user.Username) == 0 {
+		return user, errors.New("USER_NOT_FOUND")
+	}
 
 	return user, nil
 }
 
 func (repository userRepositoryImpl) Login(username, password string) (user entity.User, err error) {
-	/*_, cancel := config.NewMongoContext()
-	defer cancel()
-
-	user, err = repository.FindByUsername(username)
-	if err != nil {
-		exception.PanicIfNeeded(exception.ValidationError{
-			Message: "USER_NOT_FOUND",
-		})
-	}
-
-	exception.PanicIfNeeded(err)
+	database := config.GetDatabase()
+	database.Where("username = ?", username).First(&user)
 
 	match, _ := validation.ValidatePassword(password, user.Password)
 	if !match {
 		exception.PanicIfNeeded(exception.ValidationError{
 			Message: "PASSWORD_WRONG",
 		})
-	}*/
+	}
 
 	return user, nil
 }

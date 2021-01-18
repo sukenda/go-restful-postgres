@@ -5,6 +5,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/sukenda/go-restful-postgre/config"
 	"github.com/sukenda/go-restful-postgre/controller"
+	"github.com/sukenda/go-restful-postgre/exception"
 	"github.com/sukenda/go-restful-postgre/repository"
 	"github.com/sukenda/go-restful-postgre/service"
 )
@@ -24,6 +25,11 @@ func main() {
 	userController := controller.NewUserController(&userService)
 
 	e := echo.New()
+
+	// Error Handler
+	e.HTTPErrorHandler = func(err error, context echo.Context) {
+		err = exception.ErrorHandler(context, err)
+	}
 
 	// Middleware
 	e.Use(middleware.Logger())

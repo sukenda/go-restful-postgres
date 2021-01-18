@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
 	"github.com/sukenda/go-restful-postgre/exception"
 	"github.com/sukenda/go-restful-postgre/model"
@@ -27,8 +26,6 @@ func (controller *UserController) Route(app *echo.Echo) {
 func (controller *UserController) Register(c echo.Context) error {
 	var request model.CreateUserRequest
 	err := c.Bind(&request)
-	request.Id = uuid.New().String()
-
 	exception.PanicIfNeeded(err)
 
 	response := controller.UserService.Register(request)
