@@ -2,7 +2,7 @@ package config
 
 import (
 	"github.com/joho/godotenv"
-	"github.com/sukenda/go-restful-postgre/exception"
+	"github.com/sukenda/go-restful-postgres/exception"
 	"os"
 )
 

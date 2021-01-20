@@ -3,8 +3,8 @@ package validation
 import (
 	validation "github.com/go-ozzo/ozzo-validation/v4"
 	"github.com/go-ozzo/ozzo-validation/v4/is"
-	"github.com/sukenda/go-restful-postgre/exception"
-	"github.com/sukenda/go-restful-postgre/model"
+	"github.com/sukenda/go-restful-postgres/exception"
+	"github.com/sukenda/go-restful-postgres/model"
 )
 
 func ValidateUser(request model.CreateUserRequest) {

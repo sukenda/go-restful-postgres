@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/sukenda/go-restful-postgre/entity"
+	"github.com/sukenda/go-restful-postgres/entity"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -23,6 +23,10 @@ func NewPostgresDatabase(configuration Config) *gorm.DB {
 	}
 
 	database.AutoMigrate(&entity.User{})
+	database.AutoMigrate(&entity.Department{})
+	database.AutoMigrate(&entity.Employee{})
+	database.AutoMigrate(&entity.Project{})
+	database.AutoMigrate(&entity.Team{})
 
 	return database
 }

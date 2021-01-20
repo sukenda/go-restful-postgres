@@ -1,6 +1,6 @@
 package repository
 
-import "github.com/sukenda/go-restful-postgre/entity"
+import "github.com/sukenda/go-restful-postgres/entity"
 
 type UserRepository interface {
 

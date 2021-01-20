@@ -1,4 +1,4 @@
-module github.com/sukenda/go-restful-postgre
+module github.com/sukenda/go-restful-postgres
 
 go 1.15
 

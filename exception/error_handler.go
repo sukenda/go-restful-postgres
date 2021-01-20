@@ -2,7 +2,7 @@ package exception
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/sukenda/go-restful-postgre/model"
+	"github.com/sukenda/go-restful-postgres/model"
 	"net/http"
 )
 

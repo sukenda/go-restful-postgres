@@ -6,7 +6,6 @@ type CreateUserRequest struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 	Email    string `json:"email"`
-	Phone    string `json:"phone"`
 	Profile  string `json:"profile"`
 }
 
@@ -15,7 +14,6 @@ type CreateUserResponse struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 	Email    string `json:"email"`
-	Phone    string `json:"phone"`
 	Profile  string `json:"profile"`
 }
 
@@ -23,7 +21,6 @@ type GetUserResponse struct {
 	Id       uuid.UUID `json:"id"`
 	Username string `json:"username"`
 	Email    string `json:"email"`
-	Phone    string `json:"phone"`
 	Profile  string `json:"profile"`
 }
 

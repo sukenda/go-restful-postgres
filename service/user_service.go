@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/sukenda/go-restful-postgre/model"
+	"github.com/sukenda/go-restful-postgres/model"
 )
 
 type UserService interface {

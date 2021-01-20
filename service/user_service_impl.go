@@ -1,11 +1,11 @@
 package service
 
 import (
-	"github.com/sukenda/go-restful-postgre/entity"
-	"github.com/sukenda/go-restful-postgre/exception"
-	"github.com/sukenda/go-restful-postgre/model"
-	"github.com/sukenda/go-restful-postgre/repository"
-	"github.com/sukenda/go-restful-postgre/validation"
+	"github.com/sukenda/go-restful-postgres/entity"
+	"github.com/sukenda/go-restful-postgres/exception"
+	"github.com/sukenda/go-restful-postgres/model"
+	"github.com/sukenda/go-restful-postgres/repository"
+	"github.com/sukenda/go-restful-postgres/validation"
 )
 
 func NewUserService(userRepository *repository.UserRepository) UserService {
@@ -28,7 +28,7 @@ func (service userServiceImpl) Register(request model.CreateUserRequest) (respon
 		Username: request.Username,
 		Password: pass,
 		Email:    request.Email,
-		Phone:    request.Phone,
+		Profile:  request.Profile,
 	}
 
 	result, err := service.repository.Insert(user)
@@ -38,7 +38,7 @@ func (service userServiceImpl) Register(request model.CreateUserRequest) (respon
 		Id:       result.Id,
 		Username: user.Username,
 		Email:    user.Email,
-		Phone:    user.Phone,
+		Profile:  user.Profile,
 	}
 
 	return response
@@ -52,7 +52,7 @@ func (service userServiceImpl) FindByUsername(username string) (response model.C
 		Id:       user.Id,
 		Username: user.Username,
 		Email:    user.Email,
-		Phone:    user.Phone,
+		Profile:  user.Profile,
 	}
 
 	return response
@@ -73,7 +73,6 @@ func (service userServiceImpl) Login(request model.CreateUserRequest) (response 
 			Id:       user.Id,
 			Username: user.Username,
 			Email:    user.Email,
-			Phone:    user.Phone,
 		},
 	}
 

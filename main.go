@@ -3,11 +3,11 @@ package main
 import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/sukenda/go-restful-postgre/config"
-	"github.com/sukenda/go-restful-postgre/controller"
-	"github.com/sukenda/go-restful-postgre/exception"
-	"github.com/sukenda/go-restful-postgre/repository"
-	"github.com/sukenda/go-restful-postgre/service"
+	"github.com/sukenda/go-restful-postgres/config"
+	"github.com/sukenda/go-restful-postgres/controller"
+	"github.com/sukenda/go-restful-postgres/exception"
+	"github.com/sukenda/go-restful-postgres/repository"
+	"github.com/sukenda/go-restful-postgres/service"
 )
 
 func main() {
@@ -17,12 +17,15 @@ func main() {
 
 	// Setup Repository
 	userRepository := repository.NewUserRepository(database)
+	departmentRepository := repository.NewDepartmentRepository(database)
 
 	// Setup Service
 	userService := service.NewUserService(&userRepository)
+	departmentService := service.NewDepartmentService(&departmentRepository)
 
 	// Setup Controller
 	userController := controller.NewUserController(&userService)
+	departmentController := controller.NewDepartmentController(&departmentService)
 
 	e := echo.New()
 
@@ -42,6 +45,7 @@ func main() {
 	}))
 
 	userController.Route(e)
+	departmentController.Route(e)
 
 	e.Logger.Fatal(e.StartServer(config.NewEchoConfig(configuration)))
 }

@@ -2,9 +2,9 @@ package controller
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/sukenda/go-restful-postgre/exception"
-	"github.com/sukenda/go-restful-postgre/model"
-	"github.com/sukenda/go-restful-postgre/service"
+	"github.com/sukenda/go-restful-postgres/exception"
+	"github.com/sukenda/go-restful-postgres/model"
+	"github.com/sukenda/go-restful-postgres/service"
 	"net/http"
 )
 

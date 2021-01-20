@@ -2,9 +2,9 @@ package validation
 
 import (
 	"github.com/dgrijalva/jwt-go"
-	"github.com/sukenda/go-restful-postgre/config"
-	"github.com/sukenda/go-restful-postgre/entity"
-	"github.com/sukenda/go-restful-postgre/exception"
+	"github.com/sukenda/go-restful-postgres/config"
+	"github.com/sukenda/go-restful-postgres/entity"
+	"github.com/sukenda/go-restful-postgres/exception"
 	"time"
 )
 
@@ -48,7 +48,6 @@ func ParseToken(stringToken string) (user entity.User, err error) {
 			Username: claims.Username,
 			Password: "",
 			Email:    "",
-			Phone:    "",
 		}, nil
 	} else {
 		return user, err

@@ -2,10 +2,10 @@ package repository
 
 import (
 	"errors"
-	"github.com/sukenda/go-restful-postgre/config"
-	"github.com/sukenda/go-restful-postgre/entity"
-	"github.com/sukenda/go-restful-postgre/exception"
-	"github.com/sukenda/go-restful-postgre/validation"
+	"github.com/sukenda/go-restful-postgres/config"
+	"github.com/sukenda/go-restful-postgres/entity"
+	"github.com/sukenda/go-restful-postgres/exception"
+	"github.com/sukenda/go-restful-postgres/validation"
 	"gorm.io/gorm"
 )
 
