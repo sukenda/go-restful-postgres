@@ -15,22 +15,24 @@ type departmentRepositoryImpl struct {
 	Database *gorm.DB
 }
 
-func (repository departmentRepositoryImpl) Insert(param entity.Department) (department entity.Department, err error) {
+func (repository departmentRepositoryImpl) Insert(department entity.Department) (entity.Department, error) {
 	database := config.GetDatabase()
 
-	result := database.Create(&param)
+	result := database.Create(&department)
 	if result.Error != nil {
 		exception.PanicIfNeeded(exception.ValidationError{
-			Message: "ERROR_INSERT",
+			Message: result.Error.Error(),
 		})
 	}
 
-	return param, nil
+	return department, nil
 }
 
-func (repository departmentRepositoryImpl) Find() (departments []entity.Department) {
+func (repository departmentRepositoryImpl) Find() []entity.Department {
 	database := config.GetDatabase()
-	database.Find(&departments)
+
+	var departments []entity.Department
+	database.Preload("Projects").Find(&departments)
 
 	return departments
 }

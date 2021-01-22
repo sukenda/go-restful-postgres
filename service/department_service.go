@@ -4,7 +4,7 @@ import "github.com/sukenda/go-restful-postgres/model"
 
 
 type DepartmentService interface {
-	Insert(request model.CreateDepartmentRequest) (response model.CreateDepartmentResponse)
+	Insert(request model.CreateDepartmentRequest) model.CreateDepartmentResponse
 
-	Find() (responses []model.CreateDepartmentResponse)
+	Find() []model.CreateDepartmentResponse
 }

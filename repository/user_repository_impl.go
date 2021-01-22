@@ -17,10 +17,10 @@ type userRepositoryImpl struct {
 	Database *gorm.DB
 }
 
-func (repository userRepositoryImpl) Insert(param entity.User) (user entity.User, err error) {
+func (repository userRepositoryImpl) Insert(param entity.User) (entity.User, error) {
 	database := config.GetDatabase()
 
-	_, err = repository.FindByUsername(param.Username)
+	_, err := repository.FindByUsername(param.Username)
 	if err == nil {
 		exception.PanicIfNeeded(exception.ValidationError{
 			Message: "USER_EXIST",
@@ -37,9 +37,11 @@ func (repository userRepositoryImpl) Insert(param entity.User) (user entity.User
 	return param, nil
 }
 
-func (repository userRepositoryImpl) FindByUsername(username string) (user entity.User, err error) {
+func (repository userRepositoryImpl) FindByUsername(username string) (entity.User, error) {
 	database := config.GetDatabase()
-	database.Where("username = ?", username).First(&user)
+
+	var user entity.User
+	database.Where("username = ?", username).Preload("Employee").First(&user)
 
 	if len(user.Username) == 0 {
 		return user, errors.New("USER_NOT_FOUND")
@@ -48,9 +50,11 @@ func (repository userRepositoryImpl) FindByUsername(username string) (user entit
 	return user, nil
 }
 
-func (repository userRepositoryImpl) Login(username, password string) (user entity.User, err error) {
+func (repository userRepositoryImpl) Login(username, password string) (entity.User, error) {
 	database := config.GetDatabase()
-	database.Where("username = ?", username).First(&user)
+
+	var user entity.User
+	database.Where("username = ?", username).Preload("Employee").First(&user)
 
 	match, _ := validation.ValidatePassword(password, user.Password)
 	if !match {

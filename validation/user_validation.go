@@ -12,6 +12,8 @@ func ValidateUser(request model.CreateUserRequest) {
 		validation.Field(&request.Username, validation.Required),
 		validation.Field(&request.Password, validation.Required),
 		validation.Field(&request.Email, validation.Required, is.Email),
+		validation.Field(&request.FullName, validation.Required),
+		validation.Field(&request.Phone, validation.Required),
 	)
 
 	if err != nil {

@@ -18,14 +18,17 @@ func main() {
 	// Setup Repository
 	userRepository := repository.NewUserRepository(database)
 	departmentRepository := repository.NewDepartmentRepository(database)
+	projectRepository := repository.NewProjectRepository(database)
 
 	// Setup Service
 	userService := service.NewUserService(&userRepository)
 	departmentService := service.NewDepartmentService(&departmentRepository)
+	projectService := service.NewProjectService(&projectRepository)
 
 	// Setup Controller
 	userController := controller.NewUserController(&userService)
 	departmentController := controller.NewDepartmentController(&departmentService)
+	projectController := controller.NewProjectController(&projectService)
 
 	e := echo.New()
 
@@ -46,6 +49,7 @@ func main() {
 
 	userController.Route(e)
 	departmentController.Route(e)
+	projectController.Route(e)
 
 	e.Logger.Fatal(e.StartServer(config.NewEchoConfig(configuration)))
 }

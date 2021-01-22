@@ -6,9 +6,9 @@ import (
 
 type UserService interface {
 
-	Register(request model.CreateUserRequest) (response model.CreateUserResponse)
+	Register(request model.CreateUserRequest) model.CreateUserResponse
 
-	FindByUsername(username string) (response model.CreateUserResponse)
+	FindByUsername(username string) model.CreateUserResponse
 
-	Login(request model.CreateUserRequest) (response model.GetLoginResponse)
+	Login(request model.CreateUserRequest) model.GetLoginResponse
 }

@@ -1,0 +1,23 @@
+### Register User
+POST http://localhost:8080/api/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "Kenda",
+  "password": "Kenda",
+  "email": "Kenda@gmail.com",
+  "fullName": "Kenda",
+  "phone": "0989808080",
+  "age": 32
+}
+
+### Login User
+POST http://localhost:8080/api/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "sukenda",
+  "password": "sukenda"
+}

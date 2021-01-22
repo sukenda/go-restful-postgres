@@ -4,9 +4,9 @@ import "github.com/sukenda/go-restful-postgres/entity"
 
 type UserRepository interface {
 
-	Insert(param entity.User) (user entity.User, err error)
+	Insert(param entity.User) (entity.User, error)
 
-	FindByUsername(username string) (user entity.User, err error)
+	FindByUsername(username string) (entity.User, error)
 
-	Login(username, password string) (user entity.User, err error)
+	Login(username, password string) (entity.User, error)
 }

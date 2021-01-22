@@ -1,0 +1,16 @@
+### Create Project
+POST http://localhost:8080/api/projects
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk3ZGU1NDc3LWNjZGItNDYxYy1iNTIxLTlmYjBlNzM2MGU5ZSIsInVzZXJuYW1lIjoic3VrZW5kYSIsInJvbGUiOiJBZG1pbiIsImV4cCI6MTYxMDc4NDk5MH0.KKwLnHq3oNRxZamq13k9ASIYfPA1EEKp7Ssxp2yeJ9E
+
+{
+  "name": "Attendance",
+  "description": "Attendance for employee",
+  "departmentId": "f7762efb-b7b4-4e61-b9f7-402b5c5f5c5f"
+}
+
+### Find Project
+GET http://localhost:8080/api/projects
+Accept: application/json
+#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk3ZGU1NDc3LWNjZGItNDYxYy1iNTIxLTlmYjBlNzM2MGU5ZSIsInVzZXJuYW1lIjoic3VrZW5kYSIsInJvbGUiOiJBZG1pbiIsImV4cCI6MTYxMDc4NDk5MH0.KKwLnHq3oNRxZamq13k9ASIYfPA1EEKp7Ssxp2yeJ9E

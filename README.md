@@ -2,6 +2,11 @@
 
 Go restful api build for learning go using echo and postgresql and gorm
 
+# Relationships
+* User -> Employee using One-to-One
+* Employee -> Department using Many To Many
+* Department -> Project using One-to-Many
+
 # API Spec
 
 ## Register account
@@ -9,7 +14,7 @@ Go restful api build for learning go using echo and postgresql and gorm
 Request :
 
 - Method : POST
-- Endpoint : `/api/signup`
+- Endpoint : `/api/register`
 - Header :
     - Content-Type: application/json
     - Accept: application/json

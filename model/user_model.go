@@ -4,24 +4,26 @@ import "github.com/google/uuid"
 
 type CreateUserRequest struct {
 	Username string `json:"username"`
-	Password string `json:"password"`
+	Password string `json:"password,omitempty"`
 	Email    string `json:"email"`
-	Profile  string `json:"profile"`
+	FullName string `json:"fullName"`
+	Phone    string `json:"phone"`
+	Age      int8   `json:"age"`
 }
 
 type CreateUserResponse struct {
-	Id       uuid.UUID `json:"id"`
-	Username string `json:"username"`
-	Password string `json:"password"`
-	Email    string `json:"email"`
-	Profile  string `json:"profile"`
+	Id       uuid.UUID              `json:"id"`
+	Username string                 `json:"username"`
+	Password string                 `json:"password,omitempty"`
+	Email    string                 `json:"email"`
+	Employee CreateEmployeeResponse `json:"employee,omitempty"`
 }
 
 type GetUserResponse struct {
-	Id       uuid.UUID `json:"id"`
-	Username string `json:"username"`
-	Email    string `json:"email"`
-	Profile  string `json:"profile"`
+	Id       uuid.UUID              `json:"id"`
+	Username string                 `json:"username"`
+	Email    string                 `json:"email"`
+	Employee CreateEmployeeResponse `json:"employee,omitempty"`
 }
 
 type GetLoginResponse struct {

@@ -19,7 +19,7 @@ func NewUserController(userService *service.UserService) UserController {
 }
 
 func (controller *UserController) Route(app *echo.Echo) {
-	app.POST("/api/signup", controller.Register)
+	app.POST("/api/register", controller.Register)
 	app.POST("/api/login", controller.Login)
 }
 
@@ -39,7 +39,6 @@ func (controller *UserController) Register(c echo.Context) error {
 func (controller *UserController) Login(c echo.Context) error {
 	var request model.CreateUserRequest
 	err := c.Bind(&request)
-
 	exception.PanicIfNeeded(err)
 
 	response := controller.UserService.Login(request)

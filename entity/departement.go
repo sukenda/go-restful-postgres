@@ -2,6 +2,7 @@ package entity
 
 type Department struct {
 	Entity
-	Name        string `gorm:"type:varchar(255);not null;index"`
-	Description string `gorm:"type:text"`
+	Name        string    `gorm:"type:varchar(255);unique;not null"`
+	Description string    `gorm:"type:text"`
+	Projects    []Project
 }
